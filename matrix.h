@@ -10,6 +10,7 @@ typedef struct{
     int size;
 }matrix;
 */
+
 matrix* create_matrix(const int size);
 void delete_matrix(matrix* m);
 int get_elem(const matrix* const m,int r, int c);
