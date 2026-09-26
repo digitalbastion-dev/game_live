@@ -1,3 +1,0 @@
-/home/tony/Documents/code/gamelive/build/CMakeFiles/Igra.dir
-/home/tony/Documents/code/gamelive/build/CMakeFiles/edit_cache.dir
-/home/tony/Documents/code/gamelive/build/CMakeFiles/rebuild_cache.dir

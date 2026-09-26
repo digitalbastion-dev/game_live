@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/Igra.dir/link.d CMakeFiles/Igra.dir/main.c.o CMakeFiles/Igra.dir/matrix2d.c.o CMakeFiles/Igra.dir/game.c.o -o Igra  /usr/lib/libraylib.so.6.0.0 -lm
