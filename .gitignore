@@ -1,0 +1,7 @@
+build/
+.clangd
+game_test.c
+test 
+main
+CMakeLists.txt
+
