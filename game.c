@@ -2,6 +2,8 @@
 #include "matrix.h"
 #include <stdlib.h>
 
+#include <stdint.h>
+
 #define ALL_DEATH 0
 #define GAME_LOOP 10
 
