@@ -88,6 +88,10 @@ int matrix_CRC32_hesher(int* matrix_line, matrix* m){
      return 0;
 }
 
+int hash_get(matrix *m){
+    return m->hash;
+}
+
 int get_elem(const matrix* const m,int r, int c){
     return m->data[r][c];
 }
