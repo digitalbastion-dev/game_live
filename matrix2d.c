@@ -41,10 +41,14 @@ void delete_matrix(matrix* m){
 
 int* buffer_create(int size){
     int* buffer = calloc(size, sizeof(int));
-    if(buffer ==NULL){
+    if(buffer == NULL){
         return NULL;
     }
     return buffer;
+}
+
+void buffer_delete(int* buffer){
+    free(buffer);
 }
 
 int* matrix_in_line(matrix* m){
@@ -64,6 +68,9 @@ int* matrix_in_line(matrix* m){
 }
 
 int matrix_CRC32_hesher(int* matrix_line, matrix* m){
+    if(matrix_line == NULL){
+        return 1;
+    }
     uint32_t polynomial = 0xEDB88320;
     uint32_t CRC32_result = 0xFFFFFFFF;
     for(int i = 0; i < m->size*m->size; ++i){
@@ -77,7 +84,8 @@ int matrix_CRC32_hesher(int* matrix_line, matrix* m){
             }
         }
     }
-    return CRC32_result ^ 0xFFFFFFFF;
+     m->hash = CRC32_result ^ 0xFFFFFFFF;
+     return 0;
 }
 
 int get_elem(const matrix* const m,int r, int c){
