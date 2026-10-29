@@ -4,9 +4,11 @@
 
 #include <stdint.h>
 
-#define ALL_DEATH 0
-#define GAME_LOOP 10
 
+void delete_game(game* obj){
+    delete_matrix(obj->grid);
+    free(obj);
+}
 game* new_game(matrix* m){
    game* obj = (game*)malloc(sizeof(game));
    obj->grid = m;
@@ -50,10 +52,11 @@ int count_alive_neighbors(matrix* m, int r, int c){
     return count;
 }
 
-void get_next_generation(game* const obj){
+int get_next_generation(game* const obj){
 
     if(count_cell(obj->grid) == 0){
         game_end(obj, ALL_DEATH);
+        return ALL_DEATH;
     }
     matrix* new_m = create_matrix(get_size(obj->grid));
     
@@ -80,5 +83,6 @@ void get_next_generation(game* const obj){
     
     delete_matrix(obj->grid);
     obj->grid = new_m;
+    return CONTINUE_GAME;
 }
 

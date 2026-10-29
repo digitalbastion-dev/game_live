@@ -1,10 +1,12 @@
 #include "matrix.h"
 #include <stdlib.h>
+#include <stdint.h>
 
 
 struct matrix {
     int* data;
     int size;
+    int hash;
 };
 
 matrix* create_matrix(const int size){
@@ -50,6 +52,27 @@ matrix* matrix_sum(const matrix* const m, const matrix* const m2){
     return new_m;
 }
 matrix* matrix_mul(const matrix* const m, int value);
+
+int matrix_CRC32_hesher(int* matrix_line, matrix* m){
+    if(matrix_line == NULL){
+        return 1;
+    }
+    uint32_t polynomial = 0xEDB88320;
+    uint32_t CRC32_result = 0xFFFFFFFF;
+    for(int i = 0; i < m->size*m->size; ++i){
+        CRC32_result ^= matrix_line[i];
+        for(int bit = 0; bit < 32; ++bit){
+            if(CRC32_result & 1){
+                CRC32_result = (CRC32_result >> 1) ^ polynomial;
+            }
+            else{
+                CRC32_result >>= 1;
+            }
+        }
+    }
+     m->hash = CRC32_result ^ 0xFFFFFFFF;
+     return 0;
+}
 
 void copy_matrix(matrix* m, matrix* new_m){
     for(int i=0; i < m->size; ++i){

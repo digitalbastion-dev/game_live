@@ -1,0 +1,14 @@
+[33m8717771[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mtest[m[33m)[m HEAD@{0}: checkout: moving from main to test
+[33m2a2c36d[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{1}: checkout: moving from test to main
+[33m8717771[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mtest[m[33m)[m HEAD@{2}: checkout: moving from main to test
+[33m2a2c36d[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{3}: commit: hash getter added
+[33m4bae117[m HEAD@{4}: commit: CRC32 integrated in matrix type
+[33mf760174[m HEAD@{5}: commit: CRC32 for matrix added and tested
+[33m1b2614f[m HEAD@{6}: commit: CRC32 for matrix added and tested
+[33m6a83102[m HEAD@{7}: commit: 1d matrix fixed
+[33m8717771[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mtest[m[33m)[m HEAD@{8}: checkout: moving from test to main
+[33m8717771[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mtest[m[33m)[m HEAD@{9}: checkout: moving from main to test
+[33m8717771[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mtest[m[33m)[m HEAD@{10}: commit: something..
+[33mf1abfbd[m HEAD@{11}: commit: add gitgnore
+[33mc922dfd[m HEAD@{12}: Branch: renamed refs/heads/master to refs/heads/main
+[33mc922dfd[m HEAD@{14}: commit (initial): first commit
