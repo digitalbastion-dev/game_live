@@ -62,25 +62,19 @@ int main(){
     while(!WindowShouldClose()){
         BeginDrawing();
         ClearBackground(BLACK);
-        if(res != CONTINUE_GAME){
-            ClearBackground(BLACK);
-            DrawText("GAME END! ALL CELL DEAD", 500, 500, 10, PINK);
-            DrawText("Press ESC to exit", 400, 400, 10, PINK);
-            EndDrawing();
-            if(IsKeyPressed(KEY_ESCAPE)){
-                CloseWindow();
+        if(res == CONTINUE_GAME){
+            time_t finish = time(NULL);
+            if(difftime(finish, start) > 0.01){
+                res = get_next_generation(obj);
+                start = time(NULL);
             }
+            draw_matrix(obj);
         }
-        //ClearBackground(BLACK);
-        time_t finish = time(NULL);
-        if(difftime(finish, start) > 0.01){
-            res = get_next_generation(obj);
-            start = time(NULL);
-            }
-        draw_matrix(obj);
-
+        else{
+            draw_matrix(obj);
+            DrawText("GAME END! ALL CELLS DEAD", 200, 400, 40, PINK);
+        }
         EndDrawing();
-
     }
-    CloseWindow();
+
 }
