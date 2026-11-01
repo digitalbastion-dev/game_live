@@ -35,8 +35,10 @@ void set_elem(matrix* m, int r, int c, int value){
 
 int count_cell(matrix* const m){
     int count = 0;
-    for(int i=0;i<m->size;++i){
-        count+=m->data[i];
+    for(int i = 0; i < get_size(m)*get_size(m); ++i){
+        if(m->data[i] == 1){
+            count+=1;
+        }
     }
     return count;
 }
@@ -51,7 +53,7 @@ matrix* matrix_sum(const matrix* const m, const matrix* const m2){
     }
     return new_m;
 }
-matrix* matrix_mul(const matrix* const m, int value);
+matrix* matrix_mul(const matrix* m, int value);
 
 int matrix_CRC32_hesher(int* matrix_line, matrix* m){
     if(matrix_line == NULL){
