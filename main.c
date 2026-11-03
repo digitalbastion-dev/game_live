@@ -25,11 +25,34 @@ void draw_matrix(game* obj){
         }
     }
 }
+void end_screen(){
+    
+}
+
+void next_gen(game* obj){
+    int res = get_next_generation(obj);
+    if(res == 0){
+        ClearBackground(BLACK);
+        DrawText("GAME OVER", HEIGHT/2, WEIGHT/2, 10, WHITE);
+        DrawText("ALL CELL DEATH", HEIGHT/2, WEIGHT/2, 10, WHITE);
+    }
+    else{
+        matrix_in_buf(obj->grid);
+        draw_matrix(obj);
+        
+    }
+}
+
+void past_gen(game* obj){
+    
+}
+
 
 int main(){
     int enter_flag;
     matrix* m = create_matrix(HEIGHT/PIXEL_SIZE);
     game* obj = new_game(m); 
+    coords* buf = buffer_create();
     InitWindow(HEIGHT,WEIGHT, "game live");
     SetTargetFPS(60);
     while(!WindowShouldClose()){ // first loop
@@ -37,8 +60,8 @@ int main(){
         ClearBackground(BLACK);
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){ 
             Vector2 coords = GetMousePosition();
-            coords.x = (int)coords.x/PIXEL_SIZE;
-            coords.y = (int)coords.y/PIXEL_SIZE;
+            coords.x = coords.x/PIXEL_SIZE;
+            coords.y = coords.y/PIXEL_SIZE;
             if(get_elem(obj->grid,coords.x, coords.y) == 1){
                 set_elem(obj->grid, coords.x, coords.y, 0);
             }
@@ -62,19 +85,17 @@ int main(){
     while(!WindowShouldClose()){
         BeginDrawing();
         ClearBackground(BLACK);
-        if(res == CONTINUE_GAME){
-            time_t finish = time(NULL);
-            if(difftime(finish, start) > 0.01){
-                res = get_next_generation(obj);
-                start = time(NULL);
-            }
-            draw_matrix(obj);
-        }
-        else{
-            draw_matrix(obj);
-            DrawText("GAME END! ALL CELLS DEAD", 200, 400, 40, PINK);
+        int key = GetKeyPressed();
+        switch (key){
+            case KEY_D:
+                next_gen(obj);
+            case KEY_A:
+                past_gen(obj);
+            case KEY_Q:
+                end_screen();                            
         }
         EndDrawing();
     }
 
+    return 0;
 }

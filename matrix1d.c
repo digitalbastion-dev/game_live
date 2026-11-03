@@ -2,12 +2,20 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#define BUF_SIZE 32
+
+struct matrix_buf{
+  matrix* data;
+  size_t capacity;
+  size_t count;
+  size_t head;
+};
 
 struct matrix {
     int* data;
     int size;
     int hash;
-};
+}; 
 
 matrix* create_matrix(const int size){
     matrix* m = malloc(sizeof(matrix));
@@ -93,4 +101,8 @@ void print_matrix(matrix *m){
             }
         }
     }
+}
+
+int get_struct_size(){
+    return sizeof(matrix);
 }

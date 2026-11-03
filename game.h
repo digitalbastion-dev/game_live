@@ -12,6 +12,7 @@
 typedef struct{
     matrix* grid; 
     int hash_data[50];
+    
 }game;
 
 game* new_game(matrix* m);

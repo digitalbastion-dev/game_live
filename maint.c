@@ -17,12 +17,37 @@ void draw_matrix(game* obj){
     }
 }
 
+void end_screen(){
+    
+}
+
+void next_gen(game* obj, matrix_buf* buf){
+    int res = get_next_generation(obj);
+    if(res == 0){
+        ClearBackground(BLACK);
+        DrawText("GAME OVER", HEIGHT/2, WEIGHT/2, 10, WHITE);
+        DrawText("ALL CELL DEATH", HEIGHT/2, WEIGHT/2, 10, WHITE);
+    }
+    else{
+        matrix_in_buf(obj->grid, buf);
+        
+        draw_matrix(obj);
+        
+    }
+}
+
+void past_gen(game* obj){
+    
+}
+
 int main(){
     matrix* m = create_matrix(HEIGHT/PIXEL_SIZE);
     game* obj = new_game(m); 
     int enter_flag=0;
     InitWindow(HEIGHT,WEIGHT, "game live");
     SetTargetFPS(60);
+
+    //coords* buf = buffer_create();
     
     while(!WindowShouldClose()){ // first loop
         BeginDrawing();
@@ -49,14 +74,19 @@ int main(){
         
     }
     
-    int c = count_cell(obj->grid);
+    
     while(!WindowShouldClose()){
-    BeginDrawing();
-    ClearBackground(BLACK);
-    DrawText(TextFormat("cells: %d", c), HEIGHT/2, 500, 20, WHITE);
-    if(IsKeyPressed(KEY_Q)){
-        CloseWindow();
-    }
-    EndDrawing();
+        BeginDrawing();
+        ClearBackground(BLACK);
+        int key = GetKeyPressed();
+        switch (key){
+            case KEY_D:
+                next_gen(obj);
+            case KEY_A:
+                past_gen(obj);
+            case KEY_Q:
+                end_screen();                            
+        }
+        EndDrawing();
     }
 }
