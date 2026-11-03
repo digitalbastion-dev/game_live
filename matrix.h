@@ -3,6 +3,7 @@
 #define MATRIX_H
 
 typedef struct matrix matrix;
+typedef struct matrix_buf matrix_buf;
 
 /*
 typedef struct{
@@ -20,11 +21,10 @@ matrix* matrix_mul(const matrix* const m, int value);
 void print_matrix(matrix* m);
 int get_size(const matrix* m);
 int* matrix_in_line(matrix* m);
-int* buffer_create(int size);
 int hash_get(matrix* m);
 int matrix_CRC32_hesher(int* matrix_line, matrix* m);
 void vector_mul(const matrix* const m, int size, int vector);
 int count_cell(matrix* const m);
 void copy_matrix(matrix* m, matrix* new_m);
-void buffer_delete(int* buffer);
+int get_struct_size();
 #endif
